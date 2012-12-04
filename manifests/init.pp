@@ -6,4 +6,13 @@ class puppet-windows-user {
     home      => "c:/Users/$user_name",
     password  => "$user_pass",
   }
+
+  file { "c:/Users/$user_name":
+    ensure  => directory,
+    owner   => "$user_name",
+    group   => "$user_name",
+    require => User["$user"],
+  }
+
+
 }
