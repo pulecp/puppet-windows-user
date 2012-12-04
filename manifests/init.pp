@@ -11,7 +11,7 @@ class puppet-windows-user {
     ensure  => directory,
     owner   => "$user_name",
     group   => "$user_name",
-    require => [User["$user"]],
+    require => User["$user_name"],
   }
 
 
