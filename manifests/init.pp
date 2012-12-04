@@ -5,6 +5,7 @@ class puppet-windows-user {
   user { "$user_name":
     home      => "c:/Users/$user_name",
     password  => "$user_pass",
+    group     => 'Remote Desktop Users',
   }
 
   file { "c:/Users/$user_name":
