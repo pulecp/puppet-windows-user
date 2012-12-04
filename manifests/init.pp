@@ -5,7 +5,10 @@ class puppet-windows-user {
   user { "$user_name":
     home      => "c:/Users/$user_name",
     password  => "$user_pass",
-    group     => 'Remote Desktop Users',
+  }
+
+  group { "Remote Desktop Users":
+    require => User["$user_name"],
   }
 
   file { "c:/Users/$user_name":
@@ -14,6 +17,5 @@ class puppet-windows-user {
     group   => "$user_name",
     require => User["$user_name"],
   }
-
 
 }
